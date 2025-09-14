@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: school_core
+dependency_overrides:
+  school_core:
+    path: ..\\..\\packages\\school_core

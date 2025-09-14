@@ -1,0 +1,33 @@
+name: admin_app
+description: Admin application for School Management System
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+  flutter: ">=3.8.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  
+  # Local package dependency
+  school_core:
+    path: ../../packages/school_core
+  
+  # UI and state management
+  flutter_riverpod: ^2.4.9
+  go_router: ^12.1.3
+  
+  # Additional UI components
+  material_design_icons_flutter: ^7.0.7296
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true

@@ -1,0 +1,68 @@
+name: school_management
+
+packages:
+  - packages/**
+  - apps/**
+
+command:
+  bootstrap:
+    # It seems so that running "pub get" in parallel has some issues (like
+    # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
+    # makes the CI much more stable.
+    runPubGetInParallel: false
+    usePubspecOverrides: true
+
+  clean:
+    hooks:
+      pre: |
+        melos exec -c 1 -- "flutter clean"
+
+scripts:
+  analyze:
+    run: |
+      melos exec -c 1 -- "dart analyze ."
+    description: Run `dart analyze` for all packages.
+
+  format:
+    run: |
+      melos exec -c 1 -- "dart format . --fix"
+    description: Run `dart format` for all packages.
+
+  format-check:
+    run: |
+      melos exec -c 1 -- "dart format . --set-exit-if-changed"
+    description: Run `dart format` checks for all packages.
+
+  test:
+    run: |
+      melos exec -c 1 --fail-fast -- "flutter test"
+    description: Run `flutter test` for all packages.
+
+  test:unit:
+    run: |
+      melos exec -c 1 --fail-fast --dir-exists="test" -- "flutter test"
+    description: Run `flutter test` for all packages that have a test directory.
+
+  build:all:
+    run: |
+      melos exec -c 1 --depends-on="flutter" -- "flutter build windows"
+    description: Build all Flutter apps for Windows.
+
+  get:
+    run: |
+      melos exec -c 1 -- "flutter pub get"
+    description: Run `flutter pub get` for all packages.
+
+  upgrade:
+    run: |
+      melos exec -c 1 -- "flutter pub upgrade"
+    description: Run `flutter pub upgrade` for all packages.
+
+  version-check:
+    run: |
+      melos exec -c 1 -- "flutter pub deps"
+    description: Check dependencies for all packages.
+
+ide:
+  intellij:
+    enabled: false

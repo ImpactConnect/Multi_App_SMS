@@ -1,0 +1,44 @@
+name: school_core
+description: Shared core package for the school management system containing models, services, and utilities.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Cloud Database and Sync
+  supabase_flutter: ^1.10.0
+  flutter_dotenv: ^5.1.0  # Supabase DB, auth, storage
+  
+  # Local Database and Storage
+  sqflite: ^2.3.0  # SQLite database
+  sqflite_common_ffi: ^2.3.0  # For desktop support
+  
+  # Utilities
+  uuid: ^3.0.6  # Access code generation
+  pdf: ^3.8.0  # Report card generation
+  fl_chart: ^0.55.0  # Analytics dashboards
+  csv: ^5.0.0  # Bulk student/parent import
+  flutter_riverpod: ^2.3.0  # State management
+  
+  # Additional utilities
+  intl: ^0.18.0  # Date formatting
+  path_provider: ^2.0.0  # File system paths
+  shared_preferences: ^2.0.0  # Simple key-value storage
+  crypto: ^3.0.3  # For password hashing
+  connectivity_plus: ^4.0.0  # Network connectivity detection
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  # Removed hive_generator and build_runner as they're not needed for SQLite
+  json_serializable: ^6.0.0
+  json_annotation: ^4.0.0
+
+flutter:
+  uses-material-design: true
